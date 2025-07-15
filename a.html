@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VectorX - Auto JJ's | Roblox Automation</title>
+    <style>
+        :root {
+            --primary: #00ff00;
+            --secondary: #007700;
+            --dark: #111111;
+            --darker: #080808;
+            --light: #eeeeee;
+        }
+        
+        body {
+            font-family: 'Consolas', 'Courier New', monospace;
+            margin: 0;
+            padding: 0;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--darker);
+            padding: 20px;
+            border-bottom: 3px solid var(--primary);
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.8em;
+            font-weight: bold;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-style: italic;
+            color: var(--secondary);
+            font-size: 1.1em;
+        }
+        
+        .tech-badge {
+            background-color: var(--secondary);
+            color: var(--light);
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-top: 5px;
+            display: inline-block;
+        }
+        
+        nav {
+            background-color: var(--darker);
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid var(--secondary);
+        }
+        
+        nav a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: all 0.3s;
+            font-size: 1.1em;
+        }
+        
+        nav a:hover {
+            text-shadow: 0 0 8px var(--primary);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            border: 1px solid var(--secondary);
+        }
+        
+        .hero h1 {
+            font-size: 3.2em;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--primary);
+        }
+        
+        .hero p {
+            max-width: 700px;
+            font-size: 1.2em;
+        }
+        
+        .btn {
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 14px 35px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 25px;
+            font-size: 1.1em;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary);
+            box-shadow: 0 0 20px var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 40px 0;
+        }
+        
+        .feature {
+            flex-basis: 30%;
+            background-color: var(--darker);
+            padding: 25px;
+            border-radius: 5px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.1);
+        }
+        
+        .feature h3 {
+            color: var(--primary);
+            font-size: 1.4em;
+            margin-top: 0;
+        }
+        
+        .feature-icon {
+            font-size: 2em;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .screenshots {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 40px 0;
+        }
+        
+        .screenshot {
+            flex-basis: 48%;
+            margin-bottom: 25px;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 2px solid var(--secondary);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .screenshot:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+        
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        footer {
+            background-color: var(--darker);
+            padding: 25px;
+            text-align: center;
+            border-top: 3px solid var(--primary);
+            margin-top: 50px;
+            font-size: 0.9em;
+        }
+        
+        .download-section {
+            text-align: center;
+            padding: 50px 0;
+            background-color: var(--darker);
+            border-radius: 5px;
+            margin: 50px 0;
+            border: 1px solid var(--secondary);
+        }
+        
+        .version-info {
+            background-color: rgba(0, 120, 0, 0.2);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px auto;
+            max-width: 600px;
+            border: 1px dashed var(--secondary);
+        }
+        
+        .tech-specs {
+            background-color: var(--darker);
+            padding: 25px;
+            border-radius: 5px;
+            margin: 30px 0;
+            border: 1px solid var(--secondary);
+        }
+        
+        .tech-specs h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+        
+        .spec-item {
+            margin-bottom: 10px;
+        }
+        
+        .spec-name {
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .feature {
+                flex-basis: 100%;
+            }
+            
+            .screenshot {
+                flex-basis: 100%;
+            }
+            
+            .hero h1 {
+                font-size: 2.2em;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">VECTORX <span style="font-weight:normal;">AUTO JJ'S</span></div>
+        <div class="tagline">Automação Avançada de Jumping Jacks para Roblox</div>
+        <div class="tech-badge">Python Executável</div>
+    </header>
+    
+    <nav>
+        <a href="#features"><i class="fas fa-star"></i> Recursos</a>
+        <a href="#tech"><i class="fas fa-code"></i> Tecnologia</a>
+        <a href="#screenshots"><i class="fas fa-image"></i> Screenshots</a>
+        <a href="#download"><i class="fas fa-download"></i> Download</a>
+        <a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a>
+    </nav>
+    
+    <div class="container">
+        <section class="hero">
+            <h1>AUTOMAÇÃO DE PRECISÃO PARA ROBLOX</h1>
+            <p>VectorX Auto JJ's é a solução definitiva para automatizar seus exercícios no Roblox. Desenvolvido em Python e distribuído como executável fácil de usar, funciona perfeitamente em qualquer exército.</p>
+            <a href="#download" class="btn"><i class="fas fa-rocket"></i> BAIXAR AGORA</a>
+        </section>
+        
+        <section id="features">
+            <h2 style="color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px; display: inline-block;">
+                <i class="fas fa-cogs"></i> RECURSOS PRINCIPAIS
+            </h2>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Anti-Detecção</h3>
+                    <p>Algoritmos avançados que evitam a detecção por sistemas anti-cheat, mantendo sua conta segura.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+                    <h3>Fácil Configuração</h3>
+                    <p>Interface intuitiva que permite configurar em segundos, mesmo para iniciantes.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <h3>Alto Desempenho</h3>
+                    <p>Executável otimizado que consome mínimos recursos do sistema.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Atualizações Automáticas</h3>
+                    <p>Sistema integrado que mantém seu VectorX sempre na versão mais recente.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-robot"></i></div>
+                    <h3>Multi-Exércitos</h3>
+                    <p>Compatível com todos os exércitos do Roblox sem necessidade de reconfiguração.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <h3>Suporte Prioritário</h3>
+                    <p>Equipe especializada disponível para resolver quaisquer problemas rapidamente.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="tech" class="tech-specs">
+            <h2 style="color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px; display: inline-block;">
+                <i class="fas fa-microchip"></i> ESPECIFICAÇÕES TÉCNICAS
+            </h2>
+            
+            <div class="spec-item">
+                <span class="spec-name">Linguagem:</span> Python 3.9+
+            </div>
+            <div class="spec-item">
+                <span class="spec-name">Empacotamento:</span> EXE (PyInstaller)
+            </div>
+            <div class="spec-item">
+                <span class="spec-name">Sistema Operacional:</span> Windows 10/11 (64-bit)
+            </div>
+            <div class="spec-item">
+                <span class="spec-name">Dependências:</span> Incluídas no executável
+            </div>
+            <div class="spec-item">
+                <span class="spec-name">Tamanho:</span> ~15MB (compactado)
+            </div>
+            <div class="spec-item">
+                <span class="spec-name">Uso de RAM:</span> <50MB em execução
+            </div>
+            
+            <div style="margin-top: 30px; background-color: rgba(0,80,0,0.2); padding: 15px; border-radius: 5px; border-left: 3px solid var(--primary);">
+                <h3 style="color: var(--primary); margin-top: 0;"><i class="fas fa-info-circle"></i> Sobre o Executável</h3>
+                <p>O VectorX foi desenvolvido em Python para flexibilidade e depois compilado para EXE usando PyInstaller, permitindo que você execute o programa sem precisar instalar Python ou quaisquer dependências manualmente. Tudo está contido em um único arquivo executável fácil de usar.</p>
+            </div>
+        </section>
+        
+        <section id="screenshots">
+            <h2 style="color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px; display: inline-block;">
+                <i class="fas fa-camera"></i> IMAGENS DO VECTORX
+            </h2>
+            <div class="screenshots">
+                <div class="screenshot">
+                    <img src="https://via.placeholder.com/800x500/111111/00ff00?text=VectorX+Interface+Principal" alt="Interface principal do VectorX">
+                </div>
+                <div class="screenshot">
+                    <img src="https://via.placeholder.com/800x500/111111/00ff00?text=VectorX+Em+A%C3%A7%C3%A3o+no+Roblox" alt="VectorX em ação no Roblox">
+                </div>
+                <div class="screenshot">
+                    <img src="https://via.placeholder.com/800x500/111111/00ff00?text=Menu+de+Configura%C3%A7%C3%B5es" alt="Menu de configurações do VectorX">
+                </div>
+                <div class="screenshot">
+                    <img src="https://via.placeholder.com/800x500/111111/00ff00?text=Relat%C3%B3rios+de+Desempenho" alt="Relatórios de desempenho">
+                </div>
+            </div>
+        </section>
+        
+        <section id="download" class="download-section">
+            <h2 style="color: var(--primary);"><i class="fas fa-cloud-download-alt"></i> DOWNLOAD</h2>
+            <p>Obtenha agora a versão mais recente do VectorX Auto JJ's</p>
+            
+            <div class="version-info">
+                <h3 style="margin-top: 0; color: var(--primary);">Versão Atual: v2.1.3</h3>
+                <p><strong>Lançamento:</strong> 15/07/2023</p>
+                <p><strong>Novidades:</strong> Melhorias na detecção de movimento, menor uso de CPU, correção de bugs menores</p>
+            </div>
+            
+            <a href="#" class="btn"><i class="fas fa-download"></i> BAIXAR VECTORX (15.4MB)</a>
+            
+            <div style="margin-top: 30px; font-size: 0.9em;">
+                <p><i class="fas fa-shield-alt"></i> 100% livre de vírus • Não requer instalação</p>
+                <p><i class="fas fa-desktop"></i> Compatível com todas as versões do Roblox</p>
+            </div>
+        </section>
+        
+        <section id="faq">
+            <h2 style="color: var(--primary); border-bottom: 2px solid var(--secondary); padding-bottom: 10px; display: inline-block;">
+                <i class="fas fa-question-circle"></i> PERGUNTAS FREQUENTES
+            </h2>
+            <div class="feature" style="margin-bottom: 20px;">
+                <h3><i class="fas fa-question" style="color: var(--primary);"></i> Preciso instalar Python para usar o VectorX?</h3>
+                <p>Não! O VectorX é distribuído como um executável independente (EXE) que contém tudo o que precisa para funcionar. Basta baixar e executar.</p>
+            </div>
+            <div class="feature" style="margin-bottom: 20px;">
+                <h3><i class="fas fa-question" style="color: var(--primary);"></i> O VectorX funciona em Mac ou Linux?</h3>
+                <p>Atualmente o VectorX está disponível apenas para Windows. Versões para outras plataformas podem ser lançadas no futuro.</p>
+            </div>
+            <div class="feature" style="margin-bottom: 20px;">
+                <h3><i class="fas fa-question" style="color: var(--primary);"></i> Como sei que o VectorX é seguro?</h3>
+                <p>Nosso executável é 100% livre de malware e não coleta dados pessoais. O código-fonte pode ser disponibilizado sob solicitação para verificações de segurança.</p>
+            </div>
+            <div class="feature" style="margin-bottom: 20px;">
+                <h3><i class="fas fa-question" style="color: var(--primary);"></i> O VectorX é gratuito?</h3>
+                <p>Oferecemos uma versão gratuita com funcionalidades básicas e uma versão PRO com recursos avançados. Ambas estão disponíveis para download.</p>
+            </div>
+            <div class="feature" style="margin-bottom: 20px;">
+                <h3><i class="fas fa-question" style="color: var(--primary);"></i> Como atualizo para novas versões?</h3>
+                <p>O VectorX verifica automaticamente atualizações quando executado. Basta seguir as instruções na tela para obter a versão mais recente.</p>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p><i class="fas fa-code"></i> Desenvolvido com Python e transformado em EXE para sua conveniência</p>
+        <p>&copy; 2023 VectorX Auto JJ's. Não afiliado à Roblox Corporation.</p>
+        <p style="margin-top: 15px; font-size: 0.8em;">
+            <a href="#" style="color: var(--primary); margin: 0 10px;">Termos de Uso</a>
+            <a href="#" style="color: var(--primary); margin: 0 10px;">Política de Privacidade</a>
+            <a href="#" style="color: var(--primary); margin: 0 10px;">Contato</a>
+        </p>
+    </footer>
+</body>
+</html>

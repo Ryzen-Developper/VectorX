@@ -3,401 +3,417 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VectorX - Auto JJ's | Roblox Automation Tool</title>
+    <title>VectorX | Auto JJ's for Roblox</title>
     <style>
         :root {
-            --primary: #3fff3f;
-            --secondary: #62d862;
-            --dark: #101b10;
-            --darker: #0a130a;
-            --light: #d9f0d9;
-            --accent: #a0ff7a;
-            --text-dark: #0a0a0a;
+            --neon-green: #0ffc03;
+            --dark-bg: #0a0a0a;
+            --darker-bg: #050505;
+            --text-light: #e0e0e0;
+            --text-dim: #888;
         }
         
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        @font-face {
+            font-family: 'Neon';
+            src: url('https://assets.codepen.io/2585/Neon.ttf') format('truetype');
+        }
+        
+        * {
             margin: 0;
             padding: 0;
-            background-color: var(--dark);
-            color: var(--light);
-            line-height: 1.6;
-        }
-        
-        .app-window {
-            max-width: 300px;
-            margin: 40px auto;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 0 0 3px var(--secondary);
-            background-color: var(--darker);
-            position: relative;
-        }
-        
-        .title-bar {
-            background-color: rgba(0,0,0,0.3);
-            padding: 12px 15px;
-            text-align: center;
-            border-bottom: 1px solid var(--secondary);
-            position: relative;
-        }
-        
-        .app-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: var(--accent);
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        
-        .close-btn {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #ccc;
-            font-size: 1.5em;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .close-btn:hover {
-            color: red;
-        }
-        
-        .content {
-            padding: 20px;
-        }
-        
-        .input-group {
-            margin-bottom: 25px;
-            position: relative;
-        }
-        
-        .input-label {
-            display: block;
-            color: var(--accent);
-            font-size: 0.9em;
-            margin-bottom: 5px;
-        }
-        
-        .input-field {
-            width: 100%;
-            padding: 10px 12px;
-            border-radius: 12px;
-            border: 2px solid var(--secondary);
-            background-color: #1a2a1a;
-            color: var(--light);
-            font-size: 1em;
             box-sizing: border-box;
         }
         
-        .input-field:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 5px var(--primary);
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
         
-        .btn {
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            background-color: var(--primary);
-            color: var(--text-dark);
-            font-weight: bold;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            height: 100%;
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 100;
         }
         
-        .btn:hover {
-            background-color: #5fff5f;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
-        .btn-stop {
-            background-color: #ff3f3f;
+        /* Header */
+        header {
+            padding: 40px 0;
+            position: relative;
+            z-index: 10;
         }
         
-        .btn-stop:hover {
-            background-color: #ff5f5f;
-        }
-        
-        .status {
-            text-align: center;
-            color: var(--accent);
-            margin: 15px 0;
-            font-size: 0.9em;
-            min-height: 20px;
-        }
-        
-        .footer {
-            text-align: center;
-            color: #888;
-            font-size: 0.8em;
-            margin-top: 20px;
-            padding-bottom: 10px;
-        }
-
-        /* Site Content */
-        .site-header {
-            text-align: center;
-            padding: 30px 20px;
-            background: linear-gradient(rgba(16,27,16,0.9), rgba(16,27,16,0.9));
-        }
-        
-        .main-logo {
-            font-size: 3em;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+        .logo {
+            font-family: 'Neon', sans-serif;
+            font-size: 3.5rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
         }
         
         .tagline {
-            color: var(--accent);
-            font-style: italic;
-            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 3rem;
         }
         
+        /* Main Content */
+        .hero {
+            position: relative;
+            padding: 80px 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+        
+        .hero-title span {
+            color: var(--neon-green);
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 3rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: transparent;
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(15, 252, 3, 0.3);
+        }
+        
+        .btn:hover {
+            background: rgba(15, 252, 3, 0.1);
+            box-shadow: 0 0 20px rgba(15, 252, 3, 0.5);
+        }
+        
+        .btn-download {
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            font-weight: 600;
+            margin-left: 15px;
+        }
+        
+        .btn-download:hover {
+            background: transparent;
+            color: var(--neon-green);
+        }
+        
+        /* Features */
         .features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--neon-green);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
         
         .feature-card {
-            background-color: var(--darker);
-            border-radius: 15px;
-            padding: 20px;
-            width: 300px;
-            border-left: 4px solid var(--primary);
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            background: var(--darker-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 40px 30px;
+            transition: all 0.3s ease;
         }
         
-        .feature-card h3 {
-            color: var(--accent);
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(15, 252, 3, 0.3);
         }
         
-        .download-section {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: var(--darker);
-            margin: 40px 0;
-            border-top: 1px solid var(--secondary);
-            border-bottom: 1px solid var(--secondary);
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--neon-green);
+            margin-bottom: 20px;
         }
         
-        .download-btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: var(--primary);
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 10px;
-            margin-top: 20px;
-            transition: all 0.3s;
-        }
-        
-        .download-btn:hover {
-            background-color: #5fff5f;
-            box-shadow: 0 0 15px var(--primary);
-        }
-        
-        .screenshots {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .screenshot {
-            width: 300px;
-            border-radius: 15px;
-            border: 2px solid var(--secondary);
-            transition: transform 0.3s;
-        }
-        
-        .screenshot:hover {
-            transform: scale(1.05);
-        }
-        
-        .tech-specs {
-            background-color: var(--darker);
-            padding: 30px;
-            margin: 40px auto;
-            max-width: 800px;
-            border-radius: 15px;
-            border: 1px solid var(--secondary);
-        }
-        
-        .tech-specs h2 {
-            color: var(--accent);
-            text-align: center;
-        }
-        
-        .spec-item {
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
             margin-bottom: 15px;
         }
         
-        .spec-name {
-            color: var(--primary);
-            font-weight: bold;
+        .feature-desc {
+            color: var(--text-dim);
+            line-height: 1.7;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Neon', sans-serif;
+            font-size: 2rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+            letter-spacing: 2px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-link {
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-link:hover {
+            color: var(--neon-green);
+        }
+        
+        .copyright {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+        
+        /* Glow Effects */
+        .glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(15, 252, 3, 0.15) 0%, rgba(15, 252, 3, 0) 70%);
+            filter: blur(20px);
+            z-index: 1;
+        }
+        
+        .glow-1 {
+            top: -100px;
+            right: -100px;
+        }
+        
+        .glow-2 {
+            bottom: -100px;
+            left: -100px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .btn-download {
+                margin-left: 0;
+            }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- App Preview -->
-    <div class="app-window">
-        <div class="title-bar">
-            <span class="close-btn">✕</span>
-            <h1 class="app-title"><i class="fas fa-bolt"></i> Auto JJ's</h1>
+    <div class="noise"></div>
+    
+    <header>
+        <div class="container">
+            <div class="logo">VECTORX</div>
+            <div class="tagline">The ultimate automation tool for Roblox military groups</div>
         </div>
-        
-        <div class="content">
-            <div class="input-group">
-                <label class="input-label">Início</label>
-                <input type="number" class="input-field" value="0">
-            </div>
-            
-            <div class="input-group">
-                <label class="input-label">Fim</label>
-                <input type="number" class="input-field" value="500">
-            </div>
-            
-            <div class="input-group">
-                <label class="input-label">Prefixo</label>
-                <input type="text" class="input-field" value="!">
-            </div>
-            
-            <div class="input-group">
-                <label class="input-label">Delays (ex: 0.5,1,3)</label>
-                <input type="text" class="input-field" value="0.5,1,2,3">
-            </div>
-            
-            <div class="status">Número atual: --</div>
-            
-            <button class="btn"><i class="fas fa-play"></i> Iniciar</button>
-            
-            <div class="footer">VectorX - by Ryzen</div>
-        </div>
-    </div>
-
-    <!-- Site Content -->
-    <header class="site-header">
-        <div class="main-logo">
-            <i class="fas fa-robot"></i> VECTORX
-        </div>
-        <div class="tagline">Auto JJ's - A ferramenta definitiva para automatização no Roblox</div>
     </header>
-
-    <section class="features">
-        <div class="feature-card">
-            <h3><i class="fas fa-shield-alt"></i> Anti-Detecção</h3>
-            <p>Algoritmos avançados que evitam a detecção por sistemas anti-cheat, mantendo sua conta segura enquanto usa o VectorX.</p>
-        </div>
+    
+    <main>
+        <section class="hero">
+            <div class="glow glow-1"></div>
+            <div class="container hero-content">
+                <h1 class="hero-title">Auto <span>JJ's</span> perfected</h1>
+                <p class="hero-description">
+                    VectorX is a precision automation tool designed specifically for Roblox military roleplay. 
+                    Experience flawless execution of jumping jacks commands with customizable parameters.
+                </p>
+                <div class="btn-group">
+                    <a href="#download" class="btn btn-download">
+                        <i class="fas fa-download"></i> Download v2.1.3
+                    </a>
+                    <a href="#features" class="btn">
+                        <i class="fas fa-cog"></i> Features
+                    </a>
+                </div>
+            </div>
+        </section>
         
-        <div class="feature-card">
-            <h3><i class="fas fa-bolt"></i> Desempenho Otimizado</h3>
-            <p>Consome poucos recursos do sistema enquanto executa suas tarefas com perfeição no Roblox.</p>
-        </div>
-        
-        <div class="feature-card">
-            <h3><i class="fas fa-cogs"></i> Fácil Configuração</h3>
-            <p>Interface intuitiva que permite configurar em segundos, mesmo para usuários iniciantes.</p>
-        </div>
-    </section>
-
-    <section class="download-section">
-        <h2 style="color: var(--accent);">BAIXE O VECTORX AGORA</h2>
-        <p>Transforme sua experiência no Roblox com nossa ferramenta de automação</p>
-        <a href="#" class="download-btn"><i class="fas fa-download"></i> DOWNLOAD v2.1.3</a>
-        <p style="margin-top: 15px; font-size: 0.8em;">Windows 10/11 | Tamanho: 15.4MB</p>
-    </section>
-
-    <section class="screenshots">
-        <img src="https://via.placeholder.com/300x200/1a2a1a/a0ff7a?text=VectorX+Interface" alt="Interface do VectorX" class="screenshot">
-        <img src="https://via.placeholder.com/300x200/1a2a1a/a0ff7a?text=VectorX+Em+Ação" alt="VectorX em ação" class="screenshot">
-        <img src="https://via.placeholder.com/300x200/1a2a1a/a0ff7a?text=Configurações" alt="Configurações" class="screenshot">
-    </section>
-
-    <section class="tech-specs">
-        <h2><i class="fas fa-microchip"></i> ESPECIFICAÇÕES TÉCNICAS</h2>
-        
-        <div class="spec-item">
-            <span class="spec-name">Plataforma:</span> Windows (executável autônomo)
-        </div>
-        <div class="spec-item">
-            <span class="spec-name">Desenvolvido com:</span> Python 3.9+ e PyQt5
-        </div>
-        <div class="spec-item">
-            <span class="spec-name">Empacotamento:</span> PyInstaller (single EXE)
-        </div>
-        <div class="spec-item">
-            <span class="spec-name">Funcionalidade Principal:</span> Automatização de Jumping Jacks no Roblox
-        </div>
-        <div class="spec-item">
-            <span class="spec-name">Recursos:</span> Controle de delays, prefixos customizáveis, contador em tempo real
-        </div>
-    </section>
-
-    <footer style="text-align: center; padding: 30px; background-color: var(--darker); border-top: 1px solid var(--secondary);">
-        <p>© 2023 VectorX - Auto JJ's | Desenvolvido por Ryzen</p>
-        <p style="font-size: 0.8em; color: #888;">Não afiliado à Roblox Corporation</p>
-    </footer>
-
-    <script>
-        // Simulação interativa do app preview
-        const appBtn = document.querySelector('.app-window .btn');
-        const appStatus = document.querySelector('.app-window .status');
-        
-        appBtn.addEventListener('click', function() {
-            if (appBtn.textContent.includes('Iniciar')) {
-                appBtn.innerHTML = '<i class="fas fa-stop"></i> Parar';
-                appBtn.classList.add('btn-stop');
-                appStatus.textContent = 'Número atual: 0';
-                
-                // Simulação do contador
-                let counter = 0;
-                const interval = setInterval(() => {
-                    counter++;
-                    appStatus.textContent = `Número atual: ${counter}`;
+        <section class="features" id="features">
+            <div class="glow glow-2"></div>
+            <div class="container">
+                <h2 class="section-title">Advanced Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-secret"></i>
+                        </div>
+                        <h3 class="feature-title">Stealth Mode</h3>
+                        <p class="feature-desc">
+                            Advanced anti-detection algorithms ensure your account stays safe while using automation features.
+                        </p>
+                    </div>
                     
-                    if (!appBtn.textContent.includes('Parar') || counter >= 500) {
-                        clearInterval(interval);
-                        appStatus.textContent = 'Concluído!';
-                    }
-                }, 100);
-            } else {
-                appBtn.innerHTML = '<i class="fas fa-play"></i> Iniciar';
-                appBtn.classList.remove('btn-stop');
-                appStatus.textContent = 'Interrompido';
-            }
-        });
-    </script>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3 class="feature-title">Custom Delays</h3>
+                        <p class="feature-desc">
+                            Set random delay ranges between commands to mimic human behavior and avoid patterns.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Lightweight</h3>
+                        <p class="feature-desc">
+                            Optimized to use minimal system resources while maintaining perfect execution timing.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Secure</h3>
+                        <p class="feature-desc">
+                            Compiled executable with no external dependencies or suspicious network activity.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-random"></i>
+                        </div>
+                        <h3 class="feature-title">Randomization</h3>
+                        <p class="feature-desc">
+                            Intelligent randomization of command patterns to avoid detection by automated systems.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="feature-title">Python Core</h3>
+                        <p class="feature-desc">
+                            Built with Python 3.9 and PyQt5 for reliability and performance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="download" id="download">
+            <div class="container">
+                <h2 class="section-title">Get VectorX</h2>
+                <div class="download-content">
+                    <div class="download-card">
+                        <h3>System Requirements</h3>
+                        <ul>
+                            <li>Windows 10/11 (64-bit)</li>
+                            <li>.NET Framework 4.8</li>
+                            <li>10MB free disk space</li>
+                        </ul>
+                        <a href="#" class="btn btn-download" style="margin-top: 30px;">
+                            <i class="fas fa-download"></i> Download (15.4MB)
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-logo">VECTORX</div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">GitHub</a>
+                <a href="#" class="footer-link">Discord</a>
+                <a href="#" class="footer-link">Terms</a>
+                <a href="#" class="footer-link">Privacy</a>
+            </div>
+            <p class="copyright">
+                © 2023 VectorX. Not affiliated with Roblox Corporation.
+            </p>
+        </div>
+    </footer>
 </body>
 </html>

@@ -11,6 +11,7 @@
             --darker-bg: #050505;
             --text-light: #e0e0e0;
             --text-dim: #888;
+            --card-bg: rgba(15, 252, 3, 0.03);
         }
         
         @font-face {
@@ -52,14 +53,15 @@
         
         /* Header */
         header {
-            padding: 40px 0;
+            padding: 60px 0;
             position: relative;
             z-index: 10;
+            text-align: center;
         }
         
         .logo {
             font-family: 'Neon', sans-serif;
-            font-size: 3.5rem;
+            font-size: 4.5rem;
             color: var(--neon-green);
             text-shadow: 0 0 10px var(--neon-green);
             letter-spacing: 2px;
@@ -70,72 +72,45 @@
             font-size: 1.2rem;
             color: var(--text-dim);
             max-width: 600px;
-            margin-bottom: 3rem;
+            margin: 0 auto 3rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .nav-link {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--neon-green);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--neon-green);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
         }
         
         /* Main Content */
-        .hero {
-            position: relative;
-            padding: 80px 0;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero-title {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            line-height: 1.1;
-        }
-        
-        .hero-title span {
-            color: var(--neon-green);
-        }
-        
-        .hero-description {
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            max-width: 600px;
-            margin-bottom: 3rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background: transparent;
-            color: var(--neon-green);
-            border: 1px solid var(--neon-green);
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: 500;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(15, 252, 3, 0.3);
-        }
-        
-        .btn:hover {
-            background: rgba(15, 252, 3, 0.1);
-            box-shadow: 0 0 20px rgba(15, 252, 3, 0.5);
-        }
-        
-        .btn-download {
-            background: var(--neon-green);
-            color: var(--dark-bg);
-            font-weight: 600;
-            margin-left: 15px;
-        }
-        
-        .btn-download:hover {
-            background: transparent;
-            color: var(--neon-green);
-        }
-        
-        /* Features */
-        .features {
+        section {
             padding: 100px 0;
             position: relative;
         }
@@ -146,18 +121,22 @@
             margin-bottom: 3rem;
             position: relative;
             display: inline-block;
+            text-align: center;
+            width: 100%;
         }
         
         .section-title::after {
             content: '';
             position: absolute;
             bottom: -10px;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 60px;
             height: 3px;
             background: var(--neon-green);
         }
         
+        /* Features */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -166,16 +145,18 @@
         }
         
         .feature-card {
-            background: var(--darker-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: var(--card-bg);
+            border: 1px solid rgba(15, 252, 3, 0.1);
             border-radius: 8px;
             padding: 40px 30px;
             transition: all 0.3s ease;
+            text-align: center;
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
             border-color: rgba(15, 252, 3, 0.3);
+            box-shadow: 0 10px 20px rgba(15, 252, 3, 0.05);
         }
         
         .feature-icon {
@@ -193,6 +174,172 @@
         .feature-desc {
             color: var(--text-dim);
             line-height: 1.7;
+        }
+        
+        /* Discord */
+        .discord-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        
+        .discord-info {
+            max-width: 500px;
+        }
+        
+        .discord-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--neon-green);
+        }
+        
+        .discord-desc {
+            color: var(--text-dim);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        
+        .discord-widget {
+            width: 350px;
+            height: 500px;
+            background: var(--card-bg);
+            border: 1px solid rgba(15, 252, 3, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Download */
+        .download-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .download-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(15, 252, 3, 0.1);
+            border-radius: 8px;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .download-card-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--neon-green);
+        }
+        
+        .download-list {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .download-list li {
+            margin-bottom: 10px;
+            color: var(--text-dim);
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .download-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--neon-green);
+        }
+        
+        /* Credits */
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .credit-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(15, 252, 3, 0.1);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .credit-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: rgba(15, 252, 3, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--neon-green);
+        }
+        
+        .credit-name {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        .credit-role {
+            color: var(--neon-green);
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .credit-desc {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: transparent;
+            color: var(--neon-green);
+            border: 1px solid var(--neon-green);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: rgba(15, 252, 3, 0.1);
+            box-shadow: 0 0 20px rgba(15, 252, 3, 0.3);
+        }
+        
+        .btn-discord {
+            background: #5865F2;
+            border-color: #5865F2;
+            color: white;
+        }
+        
+        .btn-discord:hover {
+            background: transparent;
+            color: #5865F2;
+        }
+        
+        .btn-download {
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            font-weight: 600;
+        }
+        
+        .btn-download:hover {
+            background: transparent;
+            color: var(--neon-green);
         }
         
         /* Footer */
@@ -257,26 +404,24 @@
         /* Responsive */
         @media (max-width: 768px) {
             .logo {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
             
-            .hero-title {
-                font-size: 2.5rem;
+            .section-title {
+                font-size: 2rem;
             }
             
-            .btn-group {
-                display: flex;
+            .nav-links {
                 flex-direction: column;
                 gap: 15px;
             }
             
-            .btn {
-                width: 100%;
-                text-align: center;
+            .discord-container {
+                flex-direction: column;
             }
             
-            .btn-download {
-                margin-left: 0;
+            .discord-widget {
+                width: 100%;
             }
         }
     </style>
@@ -289,52 +434,40 @@
     <header>
         <div class="container">
             <div class="logo">VECTORX</div>
-            <div class="tagline">The ultimate automation tool for Roblox military groups</div>
+            <div class="tagline">Advanced automation tool for Roblox military roleplay</div>
+            <div class="nav-links">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#discord" class="nav-link">Community</a>
+                <a href="#download" class="nav-link">Download</a>
+                <a href="#credits" class="nav-link">Credits</a>
+            </div>
         </div>
     </header>
     
     <main>
-        <section class="hero">
+        <!-- Features Section -->
+        <section id="features">
             <div class="glow glow-1"></div>
-            <div class="container hero-content">
-                <h1 class="hero-title">Auto <span>JJ's</span> perfected</h1>
-                <p class="hero-description">
-                    VectorX is a precision automation tool designed specifically for Roblox military roleplay. 
-                    Experience flawless execution of jumping jacks commands with customizable parameters.
-                </p>
-                <div class="btn-group">
-                    <a href="#download" class="btn btn-download">
-                        <i class="fas fa-download"></i> Download v2.1.3
-                    </a>
-                    <a href="#features" class="btn">
-                        <i class="fas fa-cog"></i> Features
-                    </a>
-                </div>
-            </div>
-        </section>
-        
-        <section class="features" id="features">
-            <div class="glow glow-2"></div>
             <div class="container">
-                <h2 class="section-title">Advanced Features</h2>
+                <h2 class="section-title">Features</h2>
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">
                             <i class="fas fa-user-secret"></i>
                         </div>
-                        <h3 class="feature-title">Stealth Mode</h3>
+                        <h3 class="feature-title">Stealth Operation</h3>
                         <p class="feature-desc">
-                            Advanced anti-detection algorithms ensure your account stays safe while using automation features.
+                            Advanced algorithms prevent detection by anti-cheat systems while maintaining perfect timing.
                         </p>
                     </div>
                     
                     <div class="feature-card">
                         <div class="feature-icon">
-                            <i class="fas fa-sliders-h"></i>
+                            <i class="fas fa-random"></i>
                         </div>
-                        <h3 class="feature-title">Custom Delays</h3>
+                        <h3 class="feature-title">Smart Randomization</h3>
                         <p class="feature-desc">
-                            Set random delay ranges between commands to mimic human behavior and avoid patterns.
+                            Customizable delays and patterns that mimic human behavior to avoid suspicion.
                         </p>
                     </div>
                     
@@ -344,7 +477,27 @@
                         </div>
                         <h3 class="feature-title">Lightweight</h3>
                         <p class="feature-desc">
-                            Optimized to use minimal system resources while maintaining perfect execution timing.
+                            Optimized to use minimal system resources while running in the background.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="feature-title">Python Powered</h3>
+                        <p class="feature-desc">
+                            Built with Python 3.9 and PyQt5 for reliability and performance.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3 class="feature-title">Customizable</h3>
+                        <p class="feature-desc">
+                            Adjustable parameters for start/end numbers, prefixes, and delay ranges.
                         </p>
                     </div>
                     
@@ -354,47 +507,109 @@
                         </div>
                         <h3 class="feature-title">Secure</h3>
                         <p class="feature-desc">
-                            Compiled executable with no external dependencies or suspicious network activity.
-                        </p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-random"></i>
-                        </div>
-                        <h3 class="feature-title">Randomization</h3>
-                        <p class="feature-desc">
-                            Intelligent randomization of command patterns to avoid detection by automated systems.
-                        </p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 class="feature-title">Python Core</h3>
-                        <p class="feature-desc">
-                            Built with Python 3.9 and PyQt5 for reliability and performance.
+                            Compiled executable with no external dependencies or network calls.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
         
-        <section class="download" id="download">
+        <!-- Discord Section -->
+        <section id="discord" style="background: rgba(15, 252, 3, 0.02);">
             <div class="container">
-                <h2 class="section-title">Get VectorX</h2>
-                <div class="download-content">
-                    <div class="download-card">
-                        <h3>System Requirements</h3>
-                        <ul>
-                            <li>Windows 10/11 (64-bit)</li>
-                            <li>.NET Framework 4.8</li>
-                            <li>10MB free disk space</li>
-                        </ul>
-                        <a href="#" class="btn btn-download" style="margin-top: 30px;">
-                            <i class="fas fa-download"></i> Download (15.4MB)
+                <h2 class="section-title">Join Our Community</h2>
+                <div class="discord-container">
+                    <div class="discord-info">
+                        <h3 class="discord-title">VectorX Discord</h3>
+                        <p class="discord-desc">
+                            Join our growing community of Roblox automation enthusiasts. Get support, share configurations, 
+                            and stay updated on the latest VectorX developments.
+                        </p>
+                        <a href="https://discord.gg/example" class="btn btn-discord" target="_blank">
+                            <i class="fab fa-discord"></i> Join Discord
                         </a>
+                    </div>
+                    <div class="discord-widget">
+                        <!-- Discord Widget Placeholder -->
+                        <i class="fab fa-discord" style="font-size: 3rem; color: #5865F2;"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Download Section -->
+        <section id="download">
+            <div class="glow glow-2"></div>
+            <div class="container">
+                <h2 class="section-title">Download</h2>
+                <div class="download-cards">
+                    <div class="download-card">
+                        <h3 class="download-card-title">Stable Release</h3>
+                        <ul class="download-list">
+                            <li>Version: 2.1.3</li>
+                            <li>Release Date: 15/07/2023</li>
+                            <li>File Size: 15.4MB</li>
+                            <li>Requirements: Windows 10/11</li>
+                            <li>.NET Framework 4.8</li>
+                        </ul>
+                        <a href="#" class="btn btn-download">
+                            <i class="fas fa-download"></i> Download Now
+                        </a>
+                    </div>
+                    
+                    <div class="download-card">
+                        <h3 class="download-card-title">Beta Release</h3>
+                        <ul class="download-list">
+                            <li>Version: 2.2.0-beta</li>
+                            <li>Release Date: 01/08/2023</li>
+                            <li>File Size: 16.2MB</li>
+                            <li>Experimental features</li>
+                            <li>For testing only</li>
+                        </ul>
+                        <a href="#" class="btn">
+                            <i class="fas fa-flask"></i> Download Beta
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Credits Section -->
+        <section id="credits" style="background: rgba(15, 252, 3, 0.02);">
+            <div class="container">
+                <h2 class="section-title">Credits</h2>
+                <div class="credits-grid">
+                    <div class="credit-card">
+                        <div class="credit-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h3 class="credit-name">Ryzen</h3>
+                        <div class="credit-role">Lead Developer</div>
+                        <p class="credit-desc">
+                            Creator of VectorX and main developer of all automation features.
+                        </p>
+                    </div>
+                    
+                    <div class="credit-card">
+                        <div class="credit-avatar">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="credit-name">Python Community</h3>
+                        <div class="credit-role">Libraries & Tools</div>
+                        <p class="credit-desc">
+                            For all the amazing Python libraries that make VectorX possible.
+                        </p>
+                    </div>
+                    
+                    <div class="credit-card">
+                        <div class="credit-avatar">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="credit-name">Beta Testers</h3>
+                        <div class="credit-role">Testing Team</div>
+                        <p class="credit-desc">
+                            Our dedicated testers who help improve VectorX with their feedback.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -405,13 +620,15 @@
         <div class="container">
             <div class="footer-logo">VECTORX</div>
             <div class="footer-links">
-                <a href="#" class="footer-link">GitHub</a>
-                <a href="#" class="footer-link">Discord</a>
+                <a href="#features" class="footer-link">Features</a>
+                <a href="#discord" class="footer-link">Discord</a>
+                <a href="#download" class="footer-link">Download</a>
+                <a href="#credits" class="footer-link">Credits</a>
                 <a href="#" class="footer-link">Terms</a>
                 <a href="#" class="footer-link">Privacy</a>
             </div>
             <p class="copyright">
-                © 2023 VectorX. Not affiliated with Roblox Corporation.
+                © 2023 VectorX. Not affiliated with Roblox Corporation. All rights reserved.
             </p>
         </div>
     </footer>

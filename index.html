@@ -54,7 +54,7 @@
         
         /* Header */
         header {
-            padding: 80px 0 60px;
+            padding: 100px 0 80px;
             position: relative;
             z-index: 10;
             text-align: center;
@@ -63,42 +63,55 @@
         
         .logo {
             font-family: 'Neon', sans-serif;
-            font-size: 5rem;
+            font-size: 6rem;
             color: var(--neon-green);
-            text-shadow: 0 0 15px var(--neon-green);
-            letter-spacing: 3px;
-            margin-bottom: 1rem;
+            text-shadow: 0 0 20px var(--neon-green);
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
             animation: glow-pulse 2s infinite alternate;
+            position: relative;
         }
         
         @keyframes glow-pulse {
-            0% { text-shadow: 0 0 15px var(--neon-green); }
-            100% { text-shadow: 0 0 25px var(--neon-green); }
+            0% { text-shadow: 0 0 20px var(--neon-green); }
+            100% { text-shadow: 0 0 40px var(--neon-green); }
+        }
+        
+        .logo::after {
+            content: 'AUTO JJ\'S';
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            letter-spacing: 8px;
+            color: var(--neon-green);
+            opacity: 0.7;
         }
         
         .tagline {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             color: var(--text-dim);
-            max-width: 700px;
-            margin: 0 auto 3rem;
+            max-width: 800px;
+            margin: 4rem auto 3rem;
             line-height: 1.8;
         }
         
         .nav-links {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin-top: 50px;
+            gap: 50px;
+            margin-top: 60px;
         }
         
         .nav-link {
             color: var(--text-dim);
             text-decoration: none;
             font-weight: 500;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             transition: all 0.3s;
             position: relative;
-            padding: 10px 0;
+            padding: 12px 0;
         }
         
         .nav-link:hover {
@@ -111,7 +124,7 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 3px;
             background: var(--neon-green);
             transition: width 0.3s;
         }
@@ -122,14 +135,14 @@
         
         /* Main Content */
         section {
-            padding: 120px 0;
+            padding: 140px 0;
             position: relative;
         }
         
         .section-title {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 700;
-            margin-bottom: 4rem;
+            margin-bottom: 5rem;
             position: relative;
             display: inline-block;
             text-align: center;
@@ -139,55 +152,79 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
+            width: 100px;
+            height: 5px;
             background: var(--neon-green);
-            border-radius: 2px;
+            border-radius: 3px;
         }
         
         /* Features */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+            margin-top: 80px;
         }
         
         .feature-card {
             background: var(--card-bg);
             border: 1px solid var(--border-green);
-            border-radius: 12px;
-            padding: 50px 40px;
+            border-radius: 16px;
+            padding: 60px 50px;
             transition: all 0.4s ease;
             text-align: center;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(15, 252, 3, 0.05) 0%, rgba(15, 252, 3, 0) 70%);
+            transform: rotate(30deg);
+            transition: all 0.6s;
         }
         
         .feature-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
             border-color: var(--neon-green);
-            box-shadow: 0 15px 30px rgba(15, 252, 3, 0.1);
+            box-shadow: 0 20px 40px rgba(15, 252, 3, 0.15);
+        }
+        
+        .feature-card:hover::before {
+            transform: rotate(60deg);
         }
         
         .feature-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--neon-green);
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 2;
         }
         
         .feature-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
         }
         
         .feature-desc {
             color: var(--text-dim);
-            line-height: 1.8;
-            font-size: 1.1rem;
+            line-height: 1.9;
+            font-size: 1.2rem;
+            position: relative;
+            z-index: 2;
         }
         
         /* Discord */
@@ -195,83 +232,118 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 60px;
-            margin-top: 60px;
+            gap: 80px;
+            margin-top: 80px;
         }
         
         .discord-info {
-            max-width: 550px;
+            max-width: 600px;
         }
         
         .discord-title {
-            font-size: 2rem;
-            margin-bottom: 25px;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
             color: var(--neon-green);
         }
         
         .discord-desc {
             color: var(--text-dim);
-            margin-bottom: 35px;
-            line-height: 1.8;
-            font-size: 1.1rem;
+            margin-bottom: 40px;
+            line-height: 1.9;
+            font-size: 1.2rem;
         }
         
         .discord-widget {
-            width: 400px;
-            height: 500px;
+            width: 450px;
+            height: 550px;
             background: var(--card-bg);
             border: 1px solid var(--border-green);
-            border-radius: 12px;
+            border-radius: 16px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .discord-widget::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(88, 101, 242, 0.05), transparent);
         }
         
         .discord-widget:hover {
             border-color: var(--neon-green);
+            box-shadow: 0 15px 35px rgba(15, 252, 3, 0.2);
         }
         
         /* Download */
         .download-single {
-            max-width: 600px;
-            margin: 60px auto 0;
+            max-width: 700px;
+            margin: 80px auto 0;
             background: var(--card-bg);
             border: 1px solid var(--border-green);
-            border-radius: 12px;
-            padding: 50px;
+            border-radius: 16px;
+            padding: 60px;
             text-align: center;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .download-single::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(15, 252, 3, 0.05) 0%, rgba(15, 252, 3, 0) 70%);
+            transform: rotate(45deg);
+            transition: all 0.6s;
         }
         
         .download-single:hover {
             border-color: var(--neon-green);
+            box-shadow: 0 20px 50px rgba(15, 252, 3, 0.2);
+        }
+        
+        .download-single:hover::before {
+            transform: rotate(75deg);
         }
         
         .download-title {
-            font-size: 2rem;
-            margin-bottom: 25px;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
             color: var(--neon-green);
+            position: relative;
         }
         
         .download-list {
             list-style: none;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             text-align: left;
         }
         
         .download-list li {
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             color: var(--text-dim);
             position: relative;
-            padding-left: 30px;
-            font-size: 1.1rem;
+            padding-left: 35px;
+            font-size: 1.2rem;
+            line-height: 1.8;
         }
         
         .download-list li::before {
-            content: '→';
+            content: '✦';
             position: absolute;
             left: 0;
             color: var(--neon-green);
@@ -281,56 +353,83 @@
         /* Credits */
         .credits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 50px;
+            margin-top: 80px;
         }
         
         .credit-card {
             background: var(--card-bg);
             border: 1px solid var(--border-green);
-            border-radius: 12px;
-            padding: 40px;
+            border-radius: 16px;
+            padding: 50px;
             text-align: center;
             transition: all 0.3s;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .credit-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(15, 252, 3, 0.05) 0%, rgba(15, 252, 3, 0) 70%);
+            transform: rotate(30deg);
+            transition: all 0.6s;
         }
         
         .credit-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
             border-color: var(--neon-green);
+            box-shadow: 0 15px 40px rgba(15, 252, 3, 0.15);
+        }
+        
+        .credit-card:hover::before {
+            transform: rotate(60deg);
         }
         
         .credit-avatar {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            margin: 0 auto 25px;
+            margin: 0 auto 30px;
             background: rgba(15, 252, 3, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--neon-green);
-            border: 2px solid var(--border-green);
+            border: 3px solid var(--border-green);
+            position: relative;
+            z-index: 2;
         }
         
         .credit-name {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
         }
         
         .credit-role {
             color: var(--neon-green);
-            margin-bottom: 20px;
-            font-size: 1rem;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
             font-weight: 500;
+            position: relative;
+            z-index: 2;
         }
         
         .credit-desc {
             color: var(--text-dim);
-            font-size: 1rem;
-            line-height: 1.8;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            position: relative;
+            z-index: 2;
         }
         
         /* Buttons */
@@ -338,19 +437,20 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 15px 35px;
+            gap: 12px;
+            padding: 18px 40px;
             background: transparent;
             color: var(--neon-green);
-            border: 1px solid var(--neon-green);
-            border-radius: 6px;
-            font-size: 1.1rem;
+            border: 2px solid var(--neon-green);
+            border-radius: 8px;
+            font-size: 1.2rem;
             font-weight: 500;
             text-decoration: none;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
         
         .btn::before {
@@ -361,7 +461,8 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(15, 252, 3, 0.1), transparent);
-            transition: 0.5s;
+            transition: 0.6s;
+            z-index: -1;
         }
         
         .btn:hover::before {
@@ -370,7 +471,8 @@
         
         .btn:hover {
             background: rgba(15, 252, 3, 0.1);
-            box-shadow: 0 0 25px rgba(15, 252, 3, 0.3);
+            box-shadow: 0 0 30px rgba(15, 252, 3, 0.4);
+            transform: translateY(-3px);
         }
         
         .btn-discord {
@@ -382,7 +484,7 @@
         .btn-discord:hover {
             background: transparent;
             color: #5865F2;
-            box-shadow: 0 0 25px rgba(88, 101, 242, 0.3);
+            box-shadow: 0 0 30px rgba(88, 101, 242, 0.4);
         }
         
         .btn-download {
@@ -390,6 +492,8 @@
             color: var(--dark-bg);
             font-weight: 600;
             width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
         }
         
         .btn-download:hover {
@@ -399,231 +503,158 @@
         
         /* Footer */
         footer {
-            padding: 80px 0;
+            padding: 100px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             text-align: center;
             position: relative;
+            background: linear-gradient(to top, rgba(5,5,5,1) 0%, rgba(5,5,5,0) 100%);
         }
         
         .footer-logo {
             font-family: 'Neon', sans-serif;
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--neon-green);
-            text-shadow: 0 0 10px var(--neon-green);
-            letter-spacing: 2px;
-            margin-bottom: 2rem;
+            text-shadow: 0 0 15px var(--neon-green);
+            letter-spacing: 3px;
+            margin-bottom: 3rem;
         }
         
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 40px;
-            margin-bottom: 3rem;
+            gap: 50px;
+            margin-bottom: 4rem;
         }
         
         .footer-link {
             color: var(--text-dim);
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             transition: all 0.3s;
+            position: relative;
         }
         
         .footer-link:hover {
             color: var(--neon-green);
         }
         
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-green);
+            transition: width 0.3s;
+        }
+        
+        .footer-link:hover::after {
+            width: 100%;
+        }
+        
         .copyright {
             color: var(--text-dim);
-            font-size: 1rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
         }
         
         /* Glow Effects */
         .glow {
             position: absolute;
-            width: 400px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(15, 252, 3, 0.15) 0%, rgba(15, 252, 3, 0) 70%);
-            filter: blur(30px);
+            background: radial-gradient(circle, rgba(15, 252, 3, 0.2) 0%, rgba(15, 252, 3, 0) 70%);
+            filter: blur(40px);
             z-index: 1;
         }
         
         .glow-1 {
-            top: -150px;
-            right: -150px;
+            top: -200px;
+            right: -200px;
         }
         
         .glow-2 {
-            bottom: -150px;
-            left: -150px;
-        }
-        
-        /* Floating App */
-        .floating-app {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 320px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 0 0 3px var(--neon-green);
-            background-color: var(--darker-bg);
-            z-index: 1000;
-            cursor: move;
-            resize: both;
-            min-width: 300px;
-            min-height: 200px;
-            max-width: 400px;
-            max-height: 600px;
-            border: 1px solid var(--border-green);
-        }
-        
-        .app-title-bar {
-            background-color: rgba(15, 252, 3, 0.1);
-            padding: 12px 15px;
-            text-align: center;
-            border-bottom: 1px solid var(--border-green);
-            position: relative;
-            cursor: move;
-            user-select: none;
-        }
-        
-        .app-title {
-            font-family: 'Neon', sans-serif;
-            font-size: 1.5rem;
-            color: var(--neon-green);
-            text-shadow: 0 0 5px var(--neon-green);
-            letter-spacing: 1px;
-        }
-        
-        .app-close-btn {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #ccc;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .app-close-btn:hover {
-            color: red;
-        }
-        
-        .app-content {
-            padding: 20px;
-            height: calc(100% - 45px);
-            overflow-y: auto;
-        }
-        
-        .app-input-group {
-            margin-bottom: 20px;
-        }
-        
-        .app-label {
-            display: block;
-            color: var(--neon-green);
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-        }
-        
-        .app-input {
-            width: 100%;
-            padding: 10px 12px;
-            border-radius: 8px;
-            border: 1px solid var(--border-green);
-            background-color: rgba(15, 252, 3, 0.05);
-            color: var(--text-light);
-            font-size: 1rem;
-        }
-        
-        .app-input:focus {
-            outline: none;
-            border-color: var(--neon-green);
-            box-shadow: 0 0 5px var(--neon-green);
-        }
-        
-        .app-btn {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            background-color: var(--neon-green);
-            color: var(--dark-bg);
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 10px;
-        }
-        
-        .app-btn:hover {
-            background-color: transparent;
-            color: var(--neon-green);
-            box-shadow: 0 0 15px var(--neon-green);
-        }
-        
-        .app-status {
-            text-align: center;
-            color: var(--neon-green);
-            margin: 15px 0;
-            font-size: 0.9rem;
-            min-height: 20px;
+            bottom: -200px;
+            left: -200px;
         }
         
         /* Responsive */
-        @media (max-width: 1024px) {
-            .features-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        @media (max-width: 1200px) {
+            .logo {
+                font-size: 5rem;
             }
             
+            .section-title {
+                font-size: 3rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+        }
+        
+        @media (max-width: 1024px) {
             .discord-container {
                 flex-direction: column;
+                gap: 50px;
             }
             
             .discord-widget {
                 width: 100%;
-                height: 400px;
+                height: 450px;
             }
         }
         
         @media (max-width: 768px) {
             .logo {
-                font-size: 3.5rem;
+                font-size: 4rem;
+            }
+            
+            .logo::after {
+                font-size: 1.2rem;
+                bottom: -20px;
             }
             
             .section-title {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             .nav-links {
                 flex-direction: column;
-                gap: 15px;
+                gap: 20px;
             }
             
-            .floating-app {
-                right: 20px;
-                bottom: 20px;
-                width: 280px;
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .download-single {
+                padding: 40px 30px;
             }
         }
         
         @media (max-width: 480px) {
             .logo {
-                font-size: 2.8rem;
+                font-size: 3rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
             }
             
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
-            .download-single {
-                padding: 30px 20px;
+            .feature-card, .download-single, .credit-card {
+                padding: 40px 30px;
             }
             
-            .floating-app {
-                display: none; /* Esconde o app flutuante em telas muito pequenas */
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
             }
         }
     </style>
@@ -636,7 +667,7 @@
     <header>
         <div class="container">
             <div class="logo">VECTORX</div>
-            <div class="tagline">Advanced automation tool for Roblox military roleplay. Perfect your JJ's commands with precision and style.</div>
+            <div class="tagline">The ultimate automation solution for Roblox military roleplay. Precision-engineered to deliver flawless JJ's commands with customizable parameters and stealth operation.</div>
             <div class="nav-links">
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#discord" class="nav-link">Community</a>
@@ -657,9 +688,39 @@
                         <div class="feature-icon">
                             <i class="fas fa-user-secret"></i>
                         </div>
-                        <h3 class="feature-title">Stealth Operation</h3>
+                        <h3 class="feature-title">Stealth Technology</h3>
                         <p class="feature-desc">
-                            Advanced algorithms prevent detection by anti-cheat systems while maintaining perfect timing and execution of commands.
+                            Our advanced anti-detection algorithms ensure your account remains safe while executing perfect JJ's commands, with randomized patterns that mimic human behavior.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <h3 class="feature-title">Custom Configuration</h3>
+                        <p class="feature-desc">
+                            Fully adjustable parameters including start/end numbers, custom prefixes, and delay ranges to perfectly match any military group's requirements.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Optimized Performance</h3>
+                        <p class="feature-desc">
+                            Engineered for efficiency, VectorX uses minimal system resources while maintaining perfect timing and execution in the background.
+                        </p>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="feature-title">Python Core</h3>
+                        <p class="feature-desc">
+                            Built with Python 3.9 and PyQt5 for reliability, compiled to a single executable for easy deployment with all dependencies included.
                         </p>
                     </div>
                     
@@ -669,37 +730,7 @@
                         </div>
                         <h3 class="feature-title">Smart Randomization</h3>
                         <p class="feature-desc">
-                            Customizable delays and patterns that mimic human behavior to avoid suspicion and pattern detection.
-                        </p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-tachometer-alt"></i>
-                        </div>
-                        <h3 class="feature-title">Lightweight Performance</h3>
-                        <p class="feature-desc">
-                            Optimized to use minimal system resources while running in the background, ensuring smooth gameplay.
-                        </p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h3 class="feature-title">Python Powered</h3>
-                        <p class="feature-desc">
-                            Built with Python 3.9 and PyQt5 for reliability and performance, compiled to a single executable for easy use.
-                        </p>
-                    </div>
-                    
-                    <div class="feature-card">
-                        <div class="feature-icon">
-                            <i class="fas fa-sliders-h"></i>
-                        </div>
-                        <h3 class="feature-title">Fully Customizable</h3>
-                        <p class="feature-desc">
-                            Adjustable parameters for start/end numbers, prefixes, and delay ranges to fit any military group's requirements.
+                            Intelligent delay variations and command patterns that prevent detection by automated systems while maintaining perfect execution.
                         </p>
                     </div>
                     
@@ -707,9 +738,9 @@
                         <div class="feature-icon">
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h3 class="feature-title">Secure & Private</h3>
+                        <h3 class="feature-title">Security Focused</h3>
                         <p class="feature-desc">
-                            Compiled executable with no external dependencies or network calls, ensuring your data stays private.
+                            No network calls or data collection. Everything runs locally on your machine with no external dependencies after compilation.
                         </p>
                     </div>
                 </div>
@@ -717,25 +748,23 @@
         </section>
         
         <!-- Discord Section -->
-        <section id="discord" style="background: rgba(15, 252, 3, 0.02);">
+        <section id="discord" style="background: linear-gradient(to bottom, rgba(15, 252, 3, 0.02) 0%, rgba(15, 252, 3, 0) 100%);">
             <div class="container">
                 <h2 class="section-title">Join Our Community</h2>
                 <div class="discord-container">
                     <div class="discord-info">
                         <h3 class="discord-title">VectorX Discord Server</h3>
                         <p class="discord-desc">
-                            Connect with other VectorX users in our official Discord community. Get support, share your configurations, 
-                            suggest new features, and stay updated on the latest developments. Our growing community of automation 
-                            enthusiasts welcomes all skill levels.
+                            Connect with a growing community of VectorX users and automation enthusiasts. Our Discord server is the perfect place to get support, share your configurations, suggest new features, and stay updated on the latest developments. Whether you're a beginner or an advanced user, you'll find valuable resources and friendly assistance.
                         </p>
                         <a href="https://discord.gg/example" class="btn btn-discord" target="_blank">
-                            <i class="fab fa-discord"></i> Join Our Discord
+                            <i class="fab fa-discord"></i> Join Discord Server
                         </a>
                     </div>
                     <div class="discord-widget">
-                        <!-- Discord Widget Placeholder -->
-                        <i class="fab fa-discord" style="font-size: 4rem; color: #5865F2;"></i>
-                        <p style="margin-top: 20px; color: var(--text-light);">Discord Server Widget</p>
+                        <i class="fab fa-discord" style="font-size: 5rem; color: #5865F2; margin-bottom: 20px;"></i>
+                        <h3 style="color: var(--text-light); font-size: 1.5rem; margin-bottom: 10px;">VectorX Community</h3>
+                        <p style="color: var(--text-dim); font-size: 1.1rem;">500+ members online</p>
                     </div>
                 </div>
             </div>
@@ -749,13 +778,13 @@
                 <div class="download-single">
                     <h3 class="download-title">VectorX v2.1.3</h3>
                     <ul class="download-list">
-                        <li><strong>Version:</strong> 2.1.3 (Stable)</li>
+                        <li><strong>Latest Stable Version:</strong> 2.1.3</li>
                         <li><strong>Release Date:</strong> July 15, 2023</li>
-                        <li><strong>File Size:</strong> 15.4 MB (Compressed)</li>
+                        <li><strong>File Size:</strong> 15.4 MB (compressed)</li>
                         <li><strong>Platform:</strong> Windows 10/11 (64-bit)</li>
                         <li><strong>Requirements:</strong> .NET Framework 4.8</li>
-                        <li><strong>Includes:</strong> Python 3.9 Runtime</li>
-                        <li><strong>SHA-256:</strong> a1b2c3... (Verify your download)</li>
+                        <li><strong>Includes:</strong> Embedded Python 3.9 runtime</li>
+                        <li><strong>SHA-256:</strong> a1b2c3d4e5f6... (verify integrity)</li>
                     </ul>
                     <a href="#" class="btn btn-download">
                         <i class="fas fa-download"></i> Download Now (15.4 MB)
@@ -765,29 +794,29 @@
         </section>
         
         <!-- Credits Section -->
-        <section id="credits" style="background: rgba(15, 252, 3, 0.02);">
+        <section id="credits" style="background: linear-gradient(to bottom, rgba(15, 252, 3, 0.02) 0%, rgba(15, 252, 3, 0) 100%);">
             <div class="container">
-                <h2 class="section-title">Credits & Team</h2>
+                <h2 class="section-title">Development Team</h2>
                 <div class="credits-grid">
                     <div class="credit-card">
                         <div class="credit-avatar">
-                            <i class="fas fa-user-ninja"></i>
+                            <i class="fas fa-user-astronaut"></i>
                         </div>
                         <h3 class="credit-name">Ryzen</h3>
                         <div class="credit-role">Founder & Lead Developer</div>
                         <p class="credit-desc">
-                            Creator of VectorX and main architect of all core features. Responsible for the Python backend and Qt interface design.
+                            Creator of VectorX and main architect behind all core functionality. Responsible for the Python backend, Qt interface design, and overall system architecture.
                         </p>
                     </div>
                     
                     <div class="credit-card">
                         <div class="credit-avatar">
-                            <i class="fas fa-code-branch"></i>
+                            <i class="fas fa-code"></i>
                         </div>
                         <h3 class="credit-name">Open Source</h3>
                         <div class="credit-role">Libraries & Tools</div>
                         <p class="credit-desc">
-                            Special thanks to the Python community and all open source projects that made VectorX possible, including PyQt5 and PyInstaller.
+                            Special thanks to the Python community and all open source projects that made VectorX possible, including PyQt5, PyInstaller, and countless other libraries.
                         </p>
                     </div>
                     
@@ -798,7 +827,7 @@
                         <h3 class="credit-name">Beta Testers</h3>
                         <div class="credit-role">Quality Assurance Team</div>
                         <p class="credit-desc">
-                            Our dedicated team of testers who helped refine VectorX through extensive testing and valuable feedback across different environments.
+                            Our dedicated team of testers who helped refine VectorX through extensive testing across different environments and provided valuable feedback.
                         </p>
                     </div>
                 </div>
@@ -811,147 +840,30 @@
             <div class="footer-logo">VECTORX</div>
             <div class="footer-links">
                 <a href="#features" class="footer-link">Features</a>
-                <a href="#discord" class="footer-link">Discord</a>
+                <a href="#discord" class="footer-link">Community</a>
                 <a href="#download" class="footer-link">Download</a>
                 <a href="#credits" class="footer-link">Credits</a>
                 <a href="#" class="footer-link">Documentation</a>
-                <a href="#" class="footer-link">Terms of Service</a>
-                <a href="#" class="footer-link">Privacy Policy</a>
+                <a href="#" class="footer-link">Terms</a>
+                <a href="#" class="footer-link">Privacy</a>
             </div>
             <p class="copyright">
-                © 2023 VectorX Project. Not affiliated with Roblox Corporation. All rights reserved.
-                <br>VectorX is provided as-is without warranty. Use at your own risk.
+                © 2023 VectorX Project. Not affiliated with Roblox Corporation.
+                <br>All rights reserved. VectorX is provided as-is without warranty.
             </p>
         </div>
     </footer>
 
-    <!-- Floating VectorX App -->
-    <div class="floating-app" id="floatingApp">
-        <div class="app-title-bar" id="appTitleBar">
-            <div class="app-title">⚡ VECTORX</div>
-            <div class="app-close-btn" id="appCloseBtn">✕</div>
-        </div>
-        <div class="app-content">
-            <div class="app-input-group">
-                <label class="app-label">Start Number</label>
-                <input type="number" class="app-input" id="appStart" value="0">
-            </div>
-            
-            <div class="app-input-group">
-                <label class="app-label">End Number</label>
-                <input type="number" class="app-input" id="appEnd" value="500">
-            </div>
-            
-            <div class="app-input-group">
-                <label class="app-label">Prefix</label>
-                <input type="text" class="app-input" id="appPrefix" value="!">
-            </div>
-            
-            <div class="app-input-group">
-                <label class="app-label">Delays (e.g., 0.5,1,3)</label>
-                <input type="text" class="app-input" id="appDelays" value="0.5,1,2,3">
-            </div>
-            
-            <div class="app-status" id="appStatus">Status: Ready</div>
-            
-            <button class="app-btn" id="appActionBtn">Start Auto JJ's</button>
-            
-            <div style="text-align: center; margin-top: 15px; color: var(--text-dim); font-size: 0.8rem;">
-                VectorX v2.1.3
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Floating App Drag Functionality
-        const floatingApp = document.getElementById('floatingApp');
-        const appTitleBar = document.getElementById('appTitleBar');
-        const appCloseBtn = document.getElementById('appCloseBtn');
-        
-        let isDragging = false;
-        let offsetX, offsetY;
-        
-        appTitleBar.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            offsetX = e.clientX - floatingApp.getBoundingClientRect().left;
-            offsetY = e.clientY - floatingApp.getBoundingClientRect().top;
-            floatingApp.style.cursor = 'grabbing';
-        });
-        
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            
-            floatingApp.style.left = (e.clientX - offsetX) + 'px';
-            floatingApp.style.top = (e.clientY - offsetY) + 'px';
-        });
-        
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-            floatingApp.style.cursor = 'move';
-        });
-        
-        appCloseBtn.addEventListener('click', () => {
-            floatingApp.style.display = 'none';
-        });
-        
-        // App Simulation
-        const appActionBtn = document.getElementById('appActionBtn');
-        const appStatus = document.getElementById('appStatus');
-        let isRunning = false;
-        let counter = 0;
-        let interval;
-        
-        appActionBtn.addEventListener('click', () => {
-            if (!isRunning) {
-                // Validate inputs
-                const start = parseInt(document.getElementById('appStart').value);
-                const end = parseInt(document.getElementById('appEnd').value);
-                const prefix = document.getElementById('appPrefix').value;
-                const delays = document.getElementById('appDelays').value;
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
                 
-                if (isNaN(start) || isNaN(end) || !delays) {
-                    appStatus.textContent = 'Error: Check inputs';
-                    return;
-                }
-                
-                isRunning = true;
-                counter = start;
-                appActionBtn.textContent = 'Stop Auto JJ\'s';
-                appStatus.textContent = `Running: ${counter}`;
-                
-                // Simulate the auto JJ's
-                interval = setInterval(() => {
-                    counter++;
-                    appStatus.textContent = `Running: ${counter}`;
-                    
-                    if (counter >= end || !isRunning) {
-                        clearInterval(interval);
-                        isRunning = false;
-                        appActionBtn.textContent = 'Start Auto JJ\'s';
-                        appStatus.textContent = counter >= end ? 'Completed!' : 'Stopped';
-                    }
-                }, 500);
-            } else {
-                isRunning = false;
-                clearInterval(interval);
-                appActionBtn.textContent = 'Start Auto JJ\'s';
-                appStatus.textContent = 'Stopped';
-            }
-        });
-        
-        // Make app visible after page loads
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                floatingApp.style.opacity = '0';
-                floatingApp.style.display = 'block';
-                floatingApp.style.right = '40px';
-                floatingApp.style.bottom = '40px';
-                
-                setTimeout(() => {
-                    floatingApp.style.opacity = '1';
-                    floatingApp.style.transition = 'opacity 0.5s';
-                }, 100);
-            }, 1500);
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>

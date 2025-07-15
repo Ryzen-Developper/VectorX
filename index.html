@@ -213,23 +213,18 @@
         }
         
         /* Download */
-        .download-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .download-card {
+        .download-single {
+            max-width: 500px;
+            margin: 50px auto 0;
             background: var(--card-bg);
             border: 1px solid rgba(15, 252, 3, 0.1);
             border-radius: 8px;
-            padding: 40px 30px;
+            padding: 40px;
             text-align: center;
         }
         
-        .download-card-title {
-            font-size: 1.5rem;
+        .download-title {
+            font-size: 1.8rem;
             margin-bottom: 20px;
             color: var(--neon-green);
         }
@@ -335,6 +330,7 @@
             background: var(--neon-green);
             color: var(--dark-bg);
             font-weight: 600;
+            width: 100%;
         }
         
         .btn-download:hover {
@@ -542,34 +538,19 @@
             <div class="glow glow-2"></div>
             <div class="container">
                 <h2 class="section-title">Download</h2>
-                <div class="download-cards">
-                    <div class="download-card">
-                        <h3 class="download-card-title">Stable Release</h3>
-                        <ul class="download-list">
-                            <li>Version: 2.1.3</li>
-                            <li>Release Date: 15/07/2023</li>
-                            <li>File Size: 15.4MB</li>
-                            <li>Requirements: Windows 10/11</li>
-                            <li>.NET Framework 4.8</li>
-                        </ul>
-                        <a href="#" class="btn btn-download">
-                            <i class="fas fa-download"></i> Download Now
-                        </a>
-                    </div>
-                    
-                    <div class="download-card">
-                        <h3 class="download-card-title">Beta Release</h3>
-                        <ul class="download-list">
-                            <li>Version: 2.2.0-beta</li>
-                            <li>Release Date: 01/08/2023</li>
-                            <li>File Size: 16.2MB</li>
-                            <li>Experimental features</li>
-                            <li>For testing only</li>
-                        </ul>
-                        <a href="#" class="btn">
-                            <i class="fas fa-flask"></i> Download Beta
-                        </a>
-                    </div>
+                <div class="download-single">
+                    <h3 class="download-title">VectorX v2.1.3</h3>
+                    <ul class="download-list">
+                        <li>Version: 2.1.3</li>
+                        <li>Release Date: 15/07/2023</li>
+                        <li>File Size: 15.4MB</li>
+                        <li>Requirements: Windows 10/11</li>
+                        <li>.NET Framework 4.8</li>
+                        <li>Python 3.9 Runtime Included</li>
+                    </ul>
+                    <a href="#" class="btn btn-download">
+                        <i class="fas fa-download"></i> Download Now
+                    </a>
                 </div>
             </div>
         </section>

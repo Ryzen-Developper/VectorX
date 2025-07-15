@@ -12,6 +12,7 @@
             --text-light: #e0e0e0;
             --text-dim: #888;
             --card-bg: rgba(15, 252, 3, 0.03);
+            --border-green: rgba(15, 252, 3, 0.3);
         }
         
         @font-face {
@@ -53,41 +54,51 @@
         
         /* Header */
         header {
-            padding: 60px 0;
+            padding: 80px 0 60px;
             position: relative;
             z-index: 10;
             text-align: center;
+            background: linear-gradient(to bottom, rgba(10,10,10,1) 0%, rgba(10,10,10,0) 100%);
         }
         
         .logo {
             font-family: 'Neon', sans-serif;
-            font-size: 4.5rem;
+            font-size: 5rem;
             color: var(--neon-green);
-            text-shadow: 0 0 10px var(--neon-green);
-            letter-spacing: 2px;
+            text-shadow: 0 0 15px var(--neon-green);
+            letter-spacing: 3px;
             margin-bottom: 1rem;
+            animation: glow-pulse 2s infinite alternate;
+        }
+        
+        @keyframes glow-pulse {
+            0% { text-shadow: 0 0 15px var(--neon-green); }
+            100% { text-shadow: 0 0 25px var(--neon-green); }
         }
         
         .tagline {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text-dim);
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto 3rem;
+            line-height: 1.8;
         }
         
         .nav-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
+            gap: 40px;
+            margin-top: 50px;
         }
         
         .nav-link {
             color: var(--text-dim);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            font-size: 1.1rem;
+            transition: all 0.3s;
             position: relative;
+            padding: 10px 0;
         }
         
         .nav-link:hover {
@@ -97,10 +108,10 @@
         .nav-link::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
-            height: 1px;
+            height: 2px;
             background: var(--neon-green);
             transition: width 0.3s;
         }
@@ -111,14 +122,14 @@
         
         /* Main Content */
         section {
-            padding: 100px 0;
+            padding: 120px 0;
             position: relative;
         }
         
         .section-title {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             position: relative;
             display: inline-block;
             text-align: center;
@@ -128,52 +139,55 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
+            width: 80px;
+            height: 4px;
             background: var(--neon-green);
+            border-radius: 2px;
         }
         
         /* Features */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
         
         .feature-card {
             background: var(--card-bg);
-            border: 1px solid rgba(15, 252, 3, 0.1);
-            border-radius: 8px;
-            padding: 40px 30px;
-            transition: all 0.3s ease;
+            border: 1px solid var(--border-green);
+            border-radius: 12px;
+            padding: 50px 40px;
+            transition: all 0.4s ease;
             text-align: center;
+            backdrop-filter: blur(5px);
         }
         
         .feature-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(15, 252, 3, 0.3);
-            box-shadow: 0 10px 20px rgba(15, 252, 3, 0.05);
+            transform: translateY(-10px);
+            border-color: var(--neon-green);
+            box-shadow: 0 15px 30px rgba(15, 252, 3, 0.1);
         }
         
         .feature-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--neon-green);
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .feature-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .feature-desc {
             color: var(--text-dim);
-            line-height: 1.7;
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
         
         /* Discord */
@@ -181,65 +195,79 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 50px;
-            margin-top: 50px;
+            gap: 60px;
+            margin-top: 60px;
         }
         
         .discord-info {
-            max-width: 500px;
+            max-width: 550px;
         }
         
         .discord-title {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 2rem;
+            margin-bottom: 25px;
             color: var(--neon-green);
         }
         
         .discord-desc {
             color: var(--text-dim);
-            margin-bottom: 30px;
-            line-height: 1.7;
+            margin-bottom: 35px;
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
         
         .discord-widget {
-            width: 350px;
+            width: 400px;
             height: 500px;
             background: var(--card-bg);
-            border: 1px solid rgba(15, 252, 3, 0.1);
-            border-radius: 8px;
+            border: 1px solid var(--border-green);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+        
+        .discord-widget:hover {
+            border-color: var(--neon-green);
         }
         
         /* Download */
         .download-single {
-            max-width: 500px;
-            margin: 50px auto 0;
+            max-width: 600px;
+            margin: 60px auto 0;
             background: var(--card-bg);
-            border: 1px solid rgba(15, 252, 3, 0.1);
-            border-radius: 8px;
-            padding: 40px;
+            border: 1px solid var(--border-green);
+            border-radius: 12px;
+            padding: 50px;
             text-align: center;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+        
+        .download-single:hover {
+            border-color: var(--neon-green);
         }
         
         .download-title {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 2rem;
+            margin-bottom: 25px;
             color: var(--neon-green);
         }
         
         .download-list {
             list-style: none;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
             text-align: left;
         }
         
         .download-list li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             color: var(--text-dim);
             position: relative;
-            padding-left: 25px;
+            padding-left: 30px;
+            font-size: 1.1rem;
         }
         
         .download-list li::before {
@@ -247,72 +275,102 @@
             position: absolute;
             left: 0;
             color: var(--neon-green);
+            font-weight: bold;
         }
         
         /* Credits */
         .credits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
         }
         
         .credit-card {
             background: var(--card-bg);
-            border: 1px solid rgba(15, 252, 3, 0.1);
-            border-radius: 8px;
-            padding: 30px;
+            border: 1px solid var(--border-green);
+            border-radius: 12px;
+            padding: 40px;
             text-align: center;
+            transition: all 0.3s;
+            backdrop-filter: blur(5px);
+        }
+        
+        .credit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-green);
         }
         
         .credit-avatar {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
             background: rgba(15, 252, 3, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--neon-green);
+            border: 2px solid var(--border-green);
         }
         
         .credit-name {
-            font-size: 1.3rem;
-            margin-bottom: 5px;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
         }
         
         .credit-role {
             color: var(--neon-green);
-            margin-bottom: 15px;
-            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            font-weight: 500;
         }
         
         .credit-desc {
             color: var(--text-dim);
-            font-size: 0.9rem;
-            line-height: 1.7;
+            font-size: 1rem;
+            line-height: 1.8;
         }
         
         /* Buttons */
         .btn {
-            display: inline-block;
-            padding: 12px 30px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 35px;
             background: transparent;
             color: var(--neon-green);
             border: 1px solid var(--neon-green);
-            border-radius: 4px;
-            font-size: 1rem;
+            border-radius: 6px;
+            font-size: 1.1rem;
             font-weight: 500;
             text-decoration: none;
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(15, 252, 3, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
         }
         
         .btn:hover {
             background: rgba(15, 252, 3, 0.1);
-            box-shadow: 0 0 20px rgba(15, 252, 3, 0.3);
+            box-shadow: 0 0 25px rgba(15, 252, 3, 0.3);
         }
         
         .btn-discord {
@@ -324,6 +382,7 @@
         .btn-discord:hover {
             background: transparent;
             color: #5865F2;
+            box-shadow: 0 0 25px rgba(88, 101, 242, 0.3);
         }
         
         .btn-download {
@@ -340,14 +399,15 @@
         
         /* Footer */
         footer {
-            padding: 60px 0;
+            padding: 80px 0;
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             text-align: center;
+            position: relative;
         }
         
         .footer-logo {
             font-family: 'Neon', sans-serif;
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--neon-green);
             text-shadow: 0 0 10px var(--neon-green);
             letter-spacing: 2px;
@@ -357,14 +417,15 @@
         .footer-links {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-bottom: 2rem;
+            gap: 40px;
+            margin-bottom: 3rem;
         }
         
         .footer-link {
             color: var(--text-dim);
             text-decoration: none;
-            transition: color 0.3s;
+            font-size: 1.1rem;
+            transition: all 0.3s;
         }
         
         .footer-link:hover {
@@ -373,43 +434,148 @@
         
         .copyright {
             color: var(--text-dim);
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
         
         /* Glow Effects */
         .glow {
             position: absolute;
-            width: 300px;
-            height: 300px;
+            width: 400px;
+            height: 400px;
             border-radius: 50%;
             background: radial-gradient(circle, rgba(15, 252, 3, 0.15) 0%, rgba(15, 252, 3, 0) 70%);
-            filter: blur(20px);
+            filter: blur(30px);
             z-index: 1;
         }
         
         .glow-1 {
-            top: -100px;
-            right: -100px;
+            top: -150px;
+            right: -150px;
         }
         
         .glow-2 {
-            bottom: -100px;
-            left: -100px;
+            bottom: -150px;
+            left: -150px;
+        }
+        
+        /* Floating App */
+        .floating-app {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 320px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 0 3px var(--neon-green);
+            background-color: var(--darker-bg);
+            z-index: 1000;
+            cursor: move;
+            resize: both;
+            min-width: 300px;
+            min-height: 200px;
+            max-width: 400px;
+            max-height: 600px;
+            border: 1px solid var(--border-green);
+        }
+        
+        .app-title-bar {
+            background-color: rgba(15, 252, 3, 0.1);
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-green);
+            position: relative;
+            cursor: move;
+            user-select: none;
+        }
+        
+        .app-title {
+            font-family: 'Neon', sans-serif;
+            font-size: 1.5rem;
+            color: var(--neon-green);
+            text-shadow: 0 0 5px var(--neon-green);
+            letter-spacing: 1px;
+        }
+        
+        .app-close-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #ccc;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .app-close-btn:hover {
+            color: red;
+        }
+        
+        .app-content {
+            padding: 20px;
+            height: calc(100% - 45px);
+            overflow-y: auto;
+        }
+        
+        .app-input-group {
+            margin-bottom: 20px;
+        }
+        
+        .app-label {
+            display: block;
+            color: var(--neon-green);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        
+        .app-input {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-green);
+            background-color: rgba(15, 252, 3, 0.05);
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        
+        .app-input:focus {
+            outline: none;
+            border-color: var(--neon-green);
+            box-shadow: 0 0 5px var(--neon-green);
+        }
+        
+        .app-btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--neon-green);
+            color: var(--dark-bg);
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .app-btn:hover {
+            background-color: transparent;
+            color: var(--neon-green);
+            box-shadow: 0 0 15px var(--neon-green);
+        }
+        
+        .app-status {
+            text-align: center;
+            color: var(--neon-green);
+            margin: 15px 0;
+            font-size: 0.9rem;
+            min-height: 20px;
         }
         
         /* Responsive */
-        @media (max-width: 768px) {
-            .logo {
-                font-size: 3rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .nav-links {
-                flex-direction: column;
-                gap: 15px;
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
             
             .discord-container {
@@ -418,6 +584,46 @@
             
             .discord-widget {
                 width: 100%;
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .floating-app {
+                right: 20px;
+                bottom: 20px;
+                width: 280px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .download-single {
+                padding: 30px 20px;
+            }
+            
+            .floating-app {
+                display: none; /* Esconde o app flutuante em telas muito pequenas */
             }
         }
     </style>
@@ -430,7 +636,7 @@
     <header>
         <div class="container">
             <div class="logo">VECTORX</div>
-            <div class="tagline">Advanced automation tool for Roblox military roleplay</div>
+            <div class="tagline">Advanced automation tool for Roblox military roleplay. Perfect your JJ's commands with precision and style.</div>
             <div class="nav-links">
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#discord" class="nav-link">Community</a>
@@ -445,7 +651,7 @@
         <section id="features">
             <div class="glow glow-1"></div>
             <div class="container">
-                <h2 class="section-title">Features</h2>
+                <h2 class="section-title">Premium Features</h2>
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-icon">
@@ -453,7 +659,7 @@
                         </div>
                         <h3 class="feature-title">Stealth Operation</h3>
                         <p class="feature-desc">
-                            Advanced algorithms prevent detection by anti-cheat systems while maintaining perfect timing.
+                            Advanced algorithms prevent detection by anti-cheat systems while maintaining perfect timing and execution of commands.
                         </p>
                     </div>
                     
@@ -463,7 +669,7 @@
                         </div>
                         <h3 class="feature-title">Smart Randomization</h3>
                         <p class="feature-desc">
-                            Customizable delays and patterns that mimic human behavior to avoid suspicion.
+                            Customizable delays and patterns that mimic human behavior to avoid suspicion and pattern detection.
                         </p>
                     </div>
                     
@@ -471,9 +677,9 @@
                         <div class="feature-icon">
                             <i class="fas fa-tachometer-alt"></i>
                         </div>
-                        <h3 class="feature-title">Lightweight</h3>
+                        <h3 class="feature-title">Lightweight Performance</h3>
                         <p class="feature-desc">
-                            Optimized to use minimal system resources while running in the background.
+                            Optimized to use minimal system resources while running in the background, ensuring smooth gameplay.
                         </p>
                     </div>
                     
@@ -483,7 +689,7 @@
                         </div>
                         <h3 class="feature-title">Python Powered</h3>
                         <p class="feature-desc">
-                            Built with Python 3.9 and PyQt5 for reliability and performance.
+                            Built with Python 3.9 and PyQt5 for reliability and performance, compiled to a single executable for easy use.
                         </p>
                     </div>
                     
@@ -491,9 +697,9 @@
                         <div class="feature-icon">
                             <i class="fas fa-sliders-h"></i>
                         </div>
-                        <h3 class="feature-title">Customizable</h3>
+                        <h3 class="feature-title">Fully Customizable</h3>
                         <p class="feature-desc">
-                            Adjustable parameters for start/end numbers, prefixes, and delay ranges.
+                            Adjustable parameters for start/end numbers, prefixes, and delay ranges to fit any military group's requirements.
                         </p>
                     </div>
                     
@@ -501,9 +707,9 @@
                         <div class="feature-icon">
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h3 class="feature-title">Secure</h3>
+                        <h3 class="feature-title">Secure & Private</h3>
                         <p class="feature-desc">
-                            Compiled executable with no external dependencies or network calls.
+                            Compiled executable with no external dependencies or network calls, ensuring your data stays private.
                         </p>
                     </div>
                 </div>
@@ -516,18 +722,20 @@
                 <h2 class="section-title">Join Our Community</h2>
                 <div class="discord-container">
                     <div class="discord-info">
-                        <h3 class="discord-title">VectorX Discord</h3>
+                        <h3 class="discord-title">VectorX Discord Server</h3>
                         <p class="discord-desc">
-                            Join our growing community of Roblox automation enthusiasts. Get support, share configurations, 
-                            and stay updated on the latest VectorX developments.
+                            Connect with other VectorX users in our official Discord community. Get support, share your configurations, 
+                            suggest new features, and stay updated on the latest developments. Our growing community of automation 
+                            enthusiasts welcomes all skill levels.
                         </p>
                         <a href="https://discord.gg/example" class="btn btn-discord" target="_blank">
-                            <i class="fab fa-discord"></i> Join Discord
+                            <i class="fab fa-discord"></i> Join Our Discord
                         </a>
                     </div>
                     <div class="discord-widget">
                         <!-- Discord Widget Placeholder -->
-                        <i class="fab fa-discord" style="font-size: 3rem; color: #5865F2;"></i>
+                        <i class="fab fa-discord" style="font-size: 4rem; color: #5865F2;"></i>
+                        <p style="margin-top: 20px; color: var(--text-light);">Discord Server Widget</p>
                     </div>
                 </div>
             </div>
@@ -537,19 +745,20 @@
         <section id="download">
             <div class="glow glow-2"></div>
             <div class="container">
-                <h2 class="section-title">Download</h2>
+                <h2 class="section-title">Download VectorX</h2>
                 <div class="download-single">
                     <h3 class="download-title">VectorX v2.1.3</h3>
                     <ul class="download-list">
-                        <li>Version: 2.1.3</li>
-                        <li>Release Date: 15/07/2023</li>
-                        <li>File Size: 15.4MB</li>
-                        <li>Requirements: Windows 10/11</li>
-                        <li>.NET Framework 4.8</li>
-                        <li>Python 3.9 Runtime Included</li>
+                        <li><strong>Version:</strong> 2.1.3 (Stable)</li>
+                        <li><strong>Release Date:</strong> July 15, 2023</li>
+                        <li><strong>File Size:</strong> 15.4 MB (Compressed)</li>
+                        <li><strong>Platform:</strong> Windows 10/11 (64-bit)</li>
+                        <li><strong>Requirements:</strong> .NET Framework 4.8</li>
+                        <li><strong>Includes:</strong> Python 3.9 Runtime</li>
+                        <li><strong>SHA-256:</strong> a1b2c3... (Verify your download)</li>
                     </ul>
                     <a href="#" class="btn btn-download">
-                        <i class="fas fa-download"></i> Download Now
+                        <i class="fas fa-download"></i> Download Now (15.4 MB)
                     </a>
                 </div>
             </div>
@@ -558,27 +767,27 @@
         <!-- Credits Section -->
         <section id="credits" style="background: rgba(15, 252, 3, 0.02);">
             <div class="container">
-                <h2 class="section-title">Credits</h2>
+                <h2 class="section-title">Credits & Team</h2>
                 <div class="credits-grid">
                     <div class="credit-card">
                         <div class="credit-avatar">
-                            <i class="fas fa-user"></i>
+                            <i class="fas fa-user-ninja"></i>
                         </div>
                         <h3 class="credit-name">Ryzen</h3>
-                        <div class="credit-role">Lead Developer</div>
+                        <div class="credit-role">Founder & Lead Developer</div>
                         <p class="credit-desc">
-                            Creator of VectorX and main developer of all automation features.
+                            Creator of VectorX and main architect of all core features. Responsible for the Python backend and Qt interface design.
                         </p>
                     </div>
                     
                     <div class="credit-card">
                         <div class="credit-avatar">
-                            <i class="fas fa-code"></i>
+                            <i class="fas fa-code-branch"></i>
                         </div>
-                        <h3 class="credit-name">Python Community</h3>
+                        <h3 class="credit-name">Open Source</h3>
                         <div class="credit-role">Libraries & Tools</div>
                         <p class="credit-desc">
-                            For all the amazing Python libraries that make VectorX possible.
+                            Special thanks to the Python community and all open source projects that made VectorX possible, including PyQt5 and PyInstaller.
                         </p>
                     </div>
                     
@@ -587,9 +796,9 @@
                             <i class="fas fa-users"></i>
                         </div>
                         <h3 class="credit-name">Beta Testers</h3>
-                        <div class="credit-role">Testing Team</div>
+                        <div class="credit-role">Quality Assurance Team</div>
                         <p class="credit-desc">
-                            Our dedicated testers who help improve VectorX with their feedback.
+                            Our dedicated team of testers who helped refine VectorX through extensive testing and valuable feedback across different environments.
                         </p>
                     </div>
                 </div>
@@ -605,13 +814,145 @@
                 <a href="#discord" class="footer-link">Discord</a>
                 <a href="#download" class="footer-link">Download</a>
                 <a href="#credits" class="footer-link">Credits</a>
-                <a href="#" class="footer-link">Terms</a>
-                <a href="#" class="footer-link">Privacy</a>
+                <a href="#" class="footer-link">Documentation</a>
+                <a href="#" class="footer-link">Terms of Service</a>
+                <a href="#" class="footer-link">Privacy Policy</a>
             </div>
             <p class="copyright">
-                © 2023 VectorX. Not affiliated with Roblox Corporation. All rights reserved.
+                © 2023 VectorX Project. Not affiliated with Roblox Corporation. All rights reserved.
+                <br>VectorX is provided as-is without warranty. Use at your own risk.
             </p>
         </div>
     </footer>
+
+    <!-- Floating VectorX App -->
+    <div class="floating-app" id="floatingApp">
+        <div class="app-title-bar" id="appTitleBar">
+            <div class="app-title">⚡ VECTORX</div>
+            <div class="app-close-btn" id="appCloseBtn">✕</div>
+        </div>
+        <div class="app-content">
+            <div class="app-input-group">
+                <label class="app-label">Start Number</label>
+                <input type="number" class="app-input" id="appStart" value="0">
+            </div>
+            
+            <div class="app-input-group">
+                <label class="app-label">End Number</label>
+                <input type="number" class="app-input" id="appEnd" value="500">
+            </div>
+            
+            <div class="app-input-group">
+                <label class="app-label">Prefix</label>
+                <input type="text" class="app-input" id="appPrefix" value="!">
+            </div>
+            
+            <div class="app-input-group">
+                <label class="app-label">Delays (e.g., 0.5,1,3)</label>
+                <input type="text" class="app-input" id="appDelays" value="0.5,1,2,3">
+            </div>
+            
+            <div class="app-status" id="appStatus">Status: Ready</div>
+            
+            <button class="app-btn" id="appActionBtn">Start Auto JJ's</button>
+            
+            <div style="text-align: center; margin-top: 15px; color: var(--text-dim); font-size: 0.8rem;">
+                VectorX v2.1.3
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Floating App Drag Functionality
+        const floatingApp = document.getElementById('floatingApp');
+        const appTitleBar = document.getElementById('appTitleBar');
+        const appCloseBtn = document.getElementById('appCloseBtn');
+        
+        let isDragging = false;
+        let offsetX, offsetY;
+        
+        appTitleBar.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            offsetX = e.clientX - floatingApp.getBoundingClientRect().left;
+            offsetY = e.clientY - floatingApp.getBoundingClientRect().top;
+            floatingApp.style.cursor = 'grabbing';
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            
+            floatingApp.style.left = (e.clientX - offsetX) + 'px';
+            floatingApp.style.top = (e.clientY - offsetY) + 'px';
+        });
+        
+        document.addEventListener('mouseup', () => {
+            isDragging = false;
+            floatingApp.style.cursor = 'move';
+        });
+        
+        appCloseBtn.addEventListener('click', () => {
+            floatingApp.style.display = 'none';
+        });
+        
+        // App Simulation
+        const appActionBtn = document.getElementById('appActionBtn');
+        const appStatus = document.getElementById('appStatus');
+        let isRunning = false;
+        let counter = 0;
+        let interval;
+        
+        appActionBtn.addEventListener('click', () => {
+            if (!isRunning) {
+                // Validate inputs
+                const start = parseInt(document.getElementById('appStart').value);
+                const end = parseInt(document.getElementById('appEnd').value);
+                const prefix = document.getElementById('appPrefix').value;
+                const delays = document.getElementById('appDelays').value;
+                
+                if (isNaN(start) || isNaN(end) || !delays) {
+                    appStatus.textContent = 'Error: Check inputs';
+                    return;
+                }
+                
+                isRunning = true;
+                counter = start;
+                appActionBtn.textContent = 'Stop Auto JJ\'s';
+                appStatus.textContent = `Running: ${counter}`;
+                
+                // Simulate the auto JJ's
+                interval = setInterval(() => {
+                    counter++;
+                    appStatus.textContent = `Running: ${counter}`;
+                    
+                    if (counter >= end || !isRunning) {
+                        clearInterval(interval);
+                        isRunning = false;
+                        appActionBtn.textContent = 'Start Auto JJ\'s';
+                        appStatus.textContent = counter >= end ? 'Completed!' : 'Stopped';
+                    }
+                }, 500);
+            } else {
+                isRunning = false;
+                clearInterval(interval);
+                appActionBtn.textContent = 'Start Auto JJ\'s';
+                appStatus.textContent = 'Stopped';
+            }
+        });
+        
+        // Make app visible after page loads
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                floatingApp.style.opacity = '0';
+                floatingApp.style.display = 'block';
+                floatingApp.style.right = '40px';
+                floatingApp.style.bottom = '40px';
+                
+                setTimeout(() => {
+                    floatingApp.style.opacity = '1';
+                    floatingApp.style.transition = 'opacity 0.5s';
+                }, 100);
+            }, 1500);
+        });
+    </script>
 </body>
 </html>

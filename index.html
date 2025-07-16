@@ -897,6 +897,31 @@
             });
         });
     </script>
+
+<script>
+  async function atualizarMembrosDiscord() {
+    const guildId = '1345787943947599902'; // substitua pelo ID do seu servidor
+    const url = `https://discord.com/api/guilds/${guildId}/widget.json`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Não foi possível obter dados do Discord');
+      const data = await response.json();
+
+      // data.members é array dos membros online
+      const membrosOnline = data.members.length;
+
+      const membrosEl = document.getElementById('discord-members');
+      if (membrosEl) {
+        membrosEl.textContent = `${membrosOnline} membros online`;
+      }
+    } catch (err) {
+      console.error('Erro ao buscar dados do Discord:', err);
+    }
+  }
+
+  // Executa ao carregar a página
+  atualizarMembrosDiscord();
+</script>    
 </body>
 
 </html>
